@@ -4,5 +4,5 @@ feito por (Zythronis, IssacRawCore)
 
 caso queira testar aqui o script:
 ```lua
-loadstring(game:HttpGet("https://raw.githubusercontent.com/IssacRawCoreOfficiak/Admin-floor-1/main/adminfloor1.txt"))()
+loadstring(game:HttpGet("https://pastebin.com/raw/2iaMVRFC"))()
 ```
