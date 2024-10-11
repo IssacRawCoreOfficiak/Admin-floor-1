@@ -1,0 +1,210 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "Admin Floor 1", HidePremium = false, SaveConfig = true, ConfigFolder = "AdminFloor1Config"})
+
+local Tab1 = Window:MakeTab({
+Name = "Main",
+Icon = "rbxassetid://4483345998",
+PremiumOnly = false
+})
+
+local CreditsTab = Window:MakeTab({
+Name = "Credits",
+Icon = "rbxassetid://4483345998",
+PremiumOnly = false
+})
+
+local TrollScripts = Window:MakeTab({
+Name = "Troll Scripts",
+Icon = "rbxassetid://4483345998",
+PremiumOnly = false
+})
+
+Tab1.Main:AddParagraph({ Title = "Thanks", Content = "For Using My Script! :D" })
+
+Tab1:AddSection({
+Name = "MUSIC SECTION"
+})
+
+Tab1:AddTextbox({
+Name = "Music ID",
+Default = "",
+TextDisappear = true,
+Callback = function(value)
+musicId = value
+end
+})
+
+Tab1:AddButton({
+Name = "Play Music",
+Callback = function()
+local sound = Instance.new("Sound", game.Players.LocalPlayer.Character)
+sound.SoundId = "rbxassetid://" .. musicId
+sound:Play()
+end
+})
+
+Tab1:AddButton({
+Name = "Delete Seek Trigger (FE)",
+Callback = function()
+for _, v in pairs(workspace:GetDescendants()) do
+if v.Name == "SeekTrigger" then
+v:Destroy()
+end
+end
+end
+})
+
+Tab1:AddButton({
+Name = "Delete Figure (FE)",
+Callback = function()
+for _, v in pairs(workspace:GetDescendants()) do
+if v.Name == "Figure" then
+v:Destroy()
+end
+end
+end
+})
+
+Tab1:AddButton({
+Name = "Delete Rush (FE)",
+Callback = function()
+for _, v in pairs(workspace:GetDescendants()) do
+if v.Name == "Rush" then
+v:Destroy()
+end
+end
+end
+})
+
+Tab1:AddButton({
+Name = "Fullbright",
+Callback = function()
+game:GetService("Lighting").Brightness = 2
+game:GetService("Lighting").ClockTime = 14
+game:GetService("Lighting").FogEnd = 100000
+game:GetService("Lighting").GlobalShadows = false
+game:GetService("Lighting").OutdoorAmbient = Color3.fromRGB(128, 128, 128)
+end
+})
+
+Tab1:AddButton({
+Name = "SpeedBoost",
+Callback = function()
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 100
+end
+})
+
+Tab1:AddButton({
+Name = "Noclip",
+Callback = function()
+local noclip = false
+game:GetService('RunService').Stepped:connect(function()
+if noclip then
+
+game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
+end
+end)
+noclip = not noclip
+end
+})
+
+Tab1:AddButton({
+Name = "Fly",
+Callback = function()
+local Fly = false
+local Speed = 50
+local player = game.Players.LocalPlayer
+local mouse = player:GetMouse()
+
+mouse.KeyDown:connect(function(key)
+if key == "e" then
+Fly = not Fly
+local char = player.Character
+local human = char:FindFirstChildOfClass("Humanoid")
+local root = char:FindFirstChild("HumanoidRootPart")
+local bg = Instance.new("BodyGyro", root)
+local bv = Instance.new("BodyVelocity", root)
+bg.P = 9e4
+bg.maxTorque = Vector3.new(9e9, 9e9, 9e9)
+bg.cframe = root.CFrame
+bv.velocity = Vector3.new(0, 0, 0)
+bv.maxForce = Vector3.new(9e9, 9e9, 9e9)
+if Fly then
+bv.velocity = Vector3.new(0, Speed, 0)
+else
+bg:Destroy()
+bv:Destroy()
+end
+end
+end)
+end
+})
+
+Tab1:AddButton({
+Name = "Anti Lag",
+Callback = function()
+for _, v in pairs(game:GetDescendants()) do
+if v:IsA("Texture") then
+v.Texture = "rbxassetid://0"
+end
+end
+end
+})
+
+Tab1:AddButton({
+Name = "ESP (Rainbow)",
+Callback = function()
+local ESP = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+ESP:Toggle(true)
+ESP:Color(Color3.fromRGB(255, 0, 0))
+ESP:Rainbow(true)
+end
+})
+
+Tab1:AddButton({
+Name = "Auto Interact",
+Callback = function()
+local player = game.Players.LocalPlayer
+local char = player.Character
+local human = char:FindFirstChildOfClass("Humanoid")
+local root = char:FindFirstChild("HumanoidRootPart")
+local interact = game:GetService("ReplicatedStorage"):FindFirstChild("Interact")
+if interact then
+interact:FireServer()
+end
+end
+})
+
+Tab1:AddButton({
+Name = "Auto Closet",
+Callback = function()
+local player = game.Players.LocalPlayer
+local char = player.Character
+local human = char:FindFirstChildOfClass("Humanoid")
+local root = char:FindFirstChild("HumanoidRootPart")
+local closet = game:GetService("ReplicatedStorage"):FindFirstChild("Closet")
+if closet then
+closet:FireServer()
+end
+end
+})
+
+Tab1:AddSection({
+Name = "Robux FREE"
+})
+
+Tab1:AddButton({
+Name = "Get Free Robux",
+Callback = function()
+game.Players.LocalPlayer:Kick("Trolagem! Você foi removido do jogo. Você e muito Trouxa KKKKKKKKKK")
+end
+})
+
+Tab3:AddButton({
+Name = "CMD FE",
+Callback = function()
+loadstring(game:HttpGet("https://pastebin.com/raw/VNtyMuFL"))()
+})
+
+CreditsTab:AddLabel("Scripter: issacrawcore4")
+CreditsTab:AddLabel("Dev: Zythronis")
